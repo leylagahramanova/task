@@ -5,7 +5,7 @@ const verifyUser = async (req, res, next) => {
         const task = await Task.findById(req.params.id);
         if (!task) {
             return res.status(404).json({ message: 'Task not found' });
-        }
+        } 
         // Ensure the user can only access their own tasks
         if (!task.user.equals(req.user._id)) {
             return res.status(403).json({ message: 'Unauthorized' });
